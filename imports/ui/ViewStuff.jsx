@@ -3,19 +3,25 @@ import { Link, withRouter } from 'react-router-dom'
 import { withTracker } from 'meteor/react-meteor-data';
 
 import Stuffs from '../../lib/globals';
-import StuffEntry from './StuffEntry.jsx'
 
 class ViewStuff extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      loaded: false
+      loaded: false,
+      loadingIndicator: true
     };
+
+    setTimeout(() => {
+      this.setState({
+        loadingIndicator: false
+      });
+    }, 5000);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.loading && !state.loaded) {
+    if (!nextProps.loading && !nextProps.loaded) {
       this.setState({
         loaded: true,
         name: nextProps.stuff.name,
@@ -26,11 +32,11 @@ class ViewStuff extends Component {
   }
 
   render() {
-    if (this.props.loading) {
+    if (this.state.loadingIndicator) {
       return (
-        <div>
-          Loading...
-        </div>
+        <h2>
+          Converting video to text with Veritone APIs!...
+        </h2>
       )
     }
 
@@ -38,14 +44,20 @@ class ViewStuff extends Component {
       <div className="container">
         <h3>Review an interview</h3>
 
-        <h2>Interview name</h2>
+        <h4>Interview name</h4>
         <p>
           {this.state.name}
         </p>
 
-        <h2>Interviewee</h2>
+        <h4>Interviewee</h4>
         <p>
           {this.state.interviewee}
+        </p>
+
+        <h4>Transcript</h4>
+        <h5>Question 1: Tell me my about one of your weaknesses?</h5>
+        <p>
+          {this.state.transcript}
         </p>
 
       </div>
