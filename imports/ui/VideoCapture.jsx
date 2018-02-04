@@ -100,7 +100,6 @@ class VideoCapture extends Component {
           Video Capture
 
           <MediaCapturer
-              mimeType='video/mp4'
               constraints={{ audio: true, video: true }}
               timeSlice={10}
               onGranted={this.handleGranted}

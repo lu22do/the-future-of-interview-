@@ -42,23 +42,33 @@ class ViewStuff extends Component {
 
     return (
       <div className="container">
-        <h3>Review an interview</h3>
+        <h3>Interview review</h3>
 
         <h4>Interview name</h4>
         <p>
           {this.state.name}
         </p>
+        <br />
 
         <h4>Interviewee</h4>
         <p>
           {this.state.interviewee}
         </p>
+        <br />
 
         <h4>Transcript</h4>
         <h5>Question 1: Tell me my about one of your weaknesses?</h5>
         <p>
           {this.state.transcript}
         </p>
+
+        <input className="btn btn-default" input="button" value="See video"/>&nbsp;
+        <br />
+        <br />
+
+        <hr></hr>
+        <input className="btn btn-default" value="Hire"/>&nbsp;
+        <input className="btn btn-default" value="Reject"/>&nbsp;
 
       </div>
     );
