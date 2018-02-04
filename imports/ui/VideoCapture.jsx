@@ -20,6 +20,8 @@ class VideoCapture extends Component {
     this.setStreamToVideo = this.setStreamToVideo.bind(this);
     this.releaseStreamFromVideo = this.releaseStreamFromVideo.bind(this);
     this.downloadVideo = this.downloadVideo.bind(this);
+
+    this.start2 = this.start2.bind(this);
   }
   handleGranted() {
     this.setState({ granted: true });
@@ -36,6 +38,12 @@ class VideoCapture extends Component {
 
     this.setStreamToVideo(stream);
     console.log('Recording Started.');
+  }
+  start2() {
+    // var client = AgoraRTC.createRtcClient();
+    // client.init(appId, function() {
+    //   client.join(appId, channel, undefined, successCallback, errorCallback);
+    // }, errorCallback);
   }
   handleStop(blob) {
     this.setState({
@@ -116,6 +124,12 @@ class VideoCapture extends Component {
                     <video autoPlay></video>
                 </div>
               } />
+        </div>
+
+        <button onClick={this.start2}>Start recording (with Agora.io)</button>
+
+        <div>
+          <video width="320" height="240" src="/question.webm" controls/>
         </div>
       </div>
     )

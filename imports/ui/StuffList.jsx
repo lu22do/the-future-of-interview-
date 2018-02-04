@@ -15,6 +15,8 @@ class StuffList extends Component {
   }
 
   renderStuffs() {
+    const comment = false;
+    
     return this.props.stuffs().map((stuff) => (
       <tr key={stuff.id}>
         <td>{stuff.name}</td>
@@ -29,8 +31,11 @@ class StuffList extends Component {
               <Link to={`/view-stuff/${stuff.id}`}>View</Link>
             </div>
           }
-          {!stuff.isMyStuff &&
+          {comment &&
             <Link to={`/video-capture/${stuff.id}`}>Start</Link>
+          }
+          {!stuff.isMyStuff &&
+            <a href="http://localhost:3200/">Start</a>
           }
         </td>
       </tr>

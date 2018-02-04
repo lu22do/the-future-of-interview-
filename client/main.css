@@ -1,6 +1,53 @@
 /* CSS declarations go here */
 
 .navbar-default .navbar-nav a.active {
-  color: #555 !important ;
-  background-color: #e7e7e7 !important;
+  color: #fff !important ;
+  background-color: #39b54a !important;
+}
+.navbar-default {
+  background-color: #000 !important;
+  border-color: #e7e7e7  !important;
+}
+.navbar-default .navbar-brand {
+  color: #fff !important;
+}
+.btn,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    display: inline-block;
+    font-family: "montserrat-medium", sans-serif;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: .3rem;
+    height: 5.4rem;
+    line-height: calc(5.4rem - .4rem);
+    padding: 0 3rem;
+    margin: 0 .3rem 1.2rem 0;
+    color: #000000;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #39b54a;
+    border: .2rem solid #39b54a;
+}
+
+.btn:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.btn:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+    background-color: #b8b8b8;
+    border-color: #b8b8b8;
+    color: #000000;
+    outline: 0;
 }

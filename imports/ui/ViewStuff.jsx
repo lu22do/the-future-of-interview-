@@ -18,6 +18,15 @@ class ViewStuff extends Component {
         loadingIndicator: false
       });
     }, 5000);
+
+    this.showVideo = this.showVideo.bind(this);
+  }
+
+  showVideo(e) {
+    e.preventDefault();
+    this.setState({
+      showVideo: true
+    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -62,7 +71,12 @@ class ViewStuff extends Component {
           {this.state.transcript}
         </p>
 
-        <input className="btn btn-default" input="button" value="See video"/>&nbsp;
+        <a className="btn btn-default" onClick={this.showVideo} href="">See video</a>
+        {this.state.showVideo  &&
+          <div>
+            <video width="320" height="240" src="/interview.webm" controls/>
+          </div>
+        }
         <br />
         <br />
 
