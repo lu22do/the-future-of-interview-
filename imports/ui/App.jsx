@@ -9,10 +9,12 @@ import EditStuff from './EditStuff.jsx';
 import Users from './Users.jsx';
 import Login from './Login.jsx';
 import Register from './Register.jsx';
+import VideoCapture from './VideoCapture.jsx';
+import ViewStuff from './ViewStuff.jsx';
 
 const Welcome = () => (
   <div className="container">
-    <h1>Welcome to this site built with Meteor & React!</h1>
+    <h1>Welcome to The Future of Interviews!</h1>
   </div>
 )
 
@@ -42,7 +44,9 @@ export default class App extends Component {
           <PrivateRoute path='/stuff-list' component={StuffList}/>
           <PrivateRoute path='/new-stuff' component={NewStuff}/>
           <PrivateRoute path='/edit-stuff/:id' component={EditStuff}/>
+          <PrivateRoute path='/video-capture' component={VideoCapture}/>
           <PrivateRoute path='/users' component={Users}/>
+          <PrivateRoute path='/view-stuff/:id' component={ViewStuff}/>
         </div>
       </BrowserRouter>
     )

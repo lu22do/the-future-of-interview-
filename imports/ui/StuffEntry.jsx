@@ -4,11 +4,17 @@ import { Link, withRouter } from 'react-router-dom'
 export default class StuffEntry extends Component {
   constructor(props) {
     super(props);
+    let userFound = false;
+
+    if (Meteor.users.find({username: this.props.stuff.interviewee}).count()) {
+      userFound = true;
+    }
 
     this.state = {
       loaded: false,
       name: this.props.stuff ? this.props.stuff.name : '',
-      attribute: this.props.stuff ? this.props.stuff.attribute : ''
+      interviewee: this.props.stuff ? this.props.stuff.interviewee : '',
+      userFound
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -17,30 +23,43 @@ export default class StuffEntry extends Component {
   handleInputChange(event) {
     const value = event.target.value;
     const name = event.target.name;
+    let userFound = false;
+
+    if (name == 'interviewee') {
+      if (Meteor.users.find({username: value}).count()) {
+        userFound = true;
+      }
+    }
 
     this.setState({
-      [name]: value
+      [name]: value,
+      userFound
     });
   }
 
   render() {
     const hasCancelButton = this.props.hasCancelButton;
+    let intervieweeStatus = 'form-group';
+    if (this.state.interviewee) {
+      intervieweeStatus += this.state.userFound ? ' has-success' : ' has-error';
+    }
+
     return (
       <div className="container">
         <h3>{this.props.title}</h3>
         <form action="action" onSubmit={this.props.handleSubmit}>
 
           <div className="form-group">
-            <label>Stuff name</label>
+            <label>Interview name</label>
             <input className="form-control" type="text" name="name"
               value={this.state.name}
               onChange={this.handleInputChange} />
           </div>
 
-          <div className="form-group">
-            <label>Stuff attribute</label>
-            <input className="form-control" type="text" name="attribute"
-              value={this.state.attribute}
+          <div className={intervieweeStatus}>
+            <label>Interviewee</label>
+            <input className="form-control" type="text" name="interviewee"
+              value={this.state.interviewee}
               onChange={this.handleInputChange} />
           </div>
 

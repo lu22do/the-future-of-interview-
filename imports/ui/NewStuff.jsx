@@ -15,17 +15,17 @@ class NewStuff extends Component {
     event.preventDefault();
 
     let name = this.stuffEntry.state.name;
-    let attribute = this.stuffEntry.state.attribute;
+    let interviewee = this.stuffEntry.state.interviewee;
     let that = this;
 
     if (!Stuffs.find({name}).count()) {
       Stuffs.insert(
         { name,
-          attribute,
+          interviewee,
           owner: Meteor.userId() },
         function(err, _id) {
           if (err) {
-            alert('Unexpected error creating this stuff! (' + err + ')');
+            alert('Unexpected error creating this interview! (' + err + ')');
             that.props.history.push('/');
           }
           else {
@@ -35,10 +35,10 @@ class NewStuff extends Component {
       );
     }
     else {
-      alert('This stuff already exists! Could not create it.')
+      alert('This interview already exists! Could not create it.')
       this.setState({
         name: '',
-        attribute: ''
+        interviewee: ''
       });
     }
     return false;
@@ -46,7 +46,7 @@ class NewStuff extends Component {
 
   render() {
     return (
-      <StuffEntry title="Create new stuff:" stuff={{name: '', attribute: ''}} handleSubmit={this.handleSubmit}
+      <StuffEntry title="Create new interview:" stuff={{name: '', interviewee: ''}} handleSubmit={this.handleSubmit}
         ref={(stuffEntry) => {this.stuffEntry = stuffEntry}} submitTitle="Create" />
     );
   }

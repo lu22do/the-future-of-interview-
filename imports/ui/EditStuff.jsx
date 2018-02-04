@@ -20,12 +20,12 @@ class EditStuff extends Component {
     event.preventDefault();
 
     let name = this.stuffEntry.state.name;
-    let attribute = this.stuffEntry.state.attribute;
+    let interviewee = this.stuffEntry.state.interviewee;
     let that = this;
 
     Stuffs.update(this.props.stuff._id,
                   {$set: {name: name,
-                          attribute: attribute}}, function(err, _id) {
+                          interviewee: interviewee}}, function(err, _id) {
       if (err) {
         alert('Unexpected error updating this stuff (' + err + ')!')
       }
@@ -40,7 +40,7 @@ class EditStuff extends Component {
       this.setState({
         loaded: true,
         name: nextProps.stuff.name,
-        attribute: nextProps.stuff.attribute
+        interviewee: nextProps.stuff.interviewee
       });
     }
   }
@@ -55,7 +55,7 @@ class EditStuff extends Component {
     }
 
     return (
-      <StuffEntry title="Edit a stuff:" stuff={this.props.stuff} handleSubmit={this.handleSubmit}
+      <StuffEntry title="Edit an interview:" stuff={this.props.stuff} handleSubmit={this.handleSubmit}
         ref={(stuffEntry) => {this.stuffEntry = stuffEntry}} submitTitle="Update" hasCancelButton />
     );
   }

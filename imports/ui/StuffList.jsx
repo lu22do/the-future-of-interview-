@@ -18,15 +18,19 @@ class StuffList extends Component {
     return this.props.stuffs().map((stuff) => (
       <tr key={stuff.id}>
         <td>{stuff.name}</td>
-        <td>{stuff.attribute}</td>
+        <td>{stuff.interviewee}</td>
         <td>{stuff.ownername}</td>
         <td>{stuff.created}</td>
         <td>
           {stuff.isMyStuff &&
             <div>
               <Link to={`/edit-stuff/${stuff.id}`}>Edit</Link> /&nbsp;
-              <a onClick={this.deleteStuff} data-id={stuff.id} href="">Delete</a>
+              <a onClick={this.deleteStuff} data-id={stuff.id} href="">Delete</a> /&nbsp;
+              <Link to={`/view-stuff/${stuff.id}`}>View</Link>
             </div>
+          }
+          {!stuff.isMyStuff &&
+            <Link to={`/video-capture/${stuff.id}`}>Start</Link>
           }
         </td>
       </tr>
@@ -38,12 +42,12 @@ class StuffList extends Component {
       <div className="container">
         {this.props.stuffCount ? (
           <div>
-            <h1>Stuffs:</h1>
+            <h1>Interviews:</h1>
             <table className="table table-striped">
               <thead>
               <tr>
                 <th>Name</th>
-                <th>Attribute</th>
+                <th>Interviewee</th>
                 <th>Owner</th>
                 <th>Creation date</th>
                 <th>Action</th>
@@ -56,7 +60,7 @@ class StuffList extends Component {
           </div>
         ) : (
           <div>
-          No stuffs found
+          No inteview found
           </div>
        )}
       </div>
@@ -76,7 +80,7 @@ export default withTracker(props => {
       }
 
       return {name: stuff.name,
-              attribute: stuff.attribute,
+              interviewee: stuff.interviewee,
               created: moment(stuff.created).calendar(),
               id: stuff._id,
               ownername: user ? user.username : "unknown",

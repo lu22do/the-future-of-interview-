@@ -33,7 +33,7 @@ class TopBar extends Component {
               <span className="icon-bar"></span>
             </button>
 
-            <Link className="navbar-brand" to="/">Brand</Link>
+            <Link className="navbar-brand" to="/">The Future of Inteviews</Link>
           </div>
 
           {currentUser &&
@@ -42,13 +42,21 @@ class TopBar extends Component {
 
                 <li>
                   <NavLink to="/stuff-list" activeClassName="active">
-                    <span className="glyphicon glyphicon-th-list"></span> Stuffs
+                    <span className="glyphicon glyphicon-th-list"></span> Interviews
                   </NavLink>
                 </li>
 
+                {isAdmin &&
                 <li>
                   <NavLink to="/new-stuff" activeClassName="active">
-                    <span className="glyphicon glyphicon-plus"></span> Add stuff
+                    <span className="glyphicon glyphicon-plus"></span> Add interview
+                  </NavLink>
+                </li>
+                }
+
+                <li>
+                  <NavLink to="/video-capture" activeClassName="active">
+                    <span className="glyphicon glyphicon-plus"></span> Video capture
                   </NavLink>
                 </li>
 
