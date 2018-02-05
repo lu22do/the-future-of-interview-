@@ -1,33 +1,6 @@
-This is a meteor/react/bootstrap boilerplate for an app manipulating some data (a collection of 'stuffs' defined by a schemas) and protected by accounts using a user name for login. It uses react-router v4.
+This is a meteor/react/bootstrap proof-of-concept application of a "AI-driven interview" concept created during the Feb 3-4 2018 DevWeek Hackathon in SF.
 
-Regarding account management, there is an 'admin' account who can see and administer the users (and any stuff data).
-Login is required to use the app and only owner can delete/edit his own stuff. The Admin password can be set in the settings.json file.
-
-The UI react components are the following:
-- App
-- Topbar
-- Auth:
-    - Login
-    - Register
-- Stuffs:
-    - Stuff list
-    - New stuff (uses StuffEntry component)
-    - Edit stuff (uses StuffEntry component)
-- Users:
-    - User list
-
-This project was created by adding the following meteor packages:
-- accounts-base & accounts-password
-- twbs:bootstrap
-- momentjs:moment
-- aldeed:simple-schema & aldeed:collection2
-- react-meteor-data
-and the following npm packages:
-- react, react-dom, prop-types
-- react-router-dom
-
-Possible improvements:
-- for error handling, use real UI component rather than alert() - actually alert() don't seem to work with react-router
-- add unit test
-- add a 'Stuff detail' UI component as real app would usually have more details than can be shown in 'Stuff list'
-- investigate why stuff updates are not reflected dynamically (only add/remove) in list and edit views
+The workflow consists of 3 phases:
+1- The interviewer creates an interview instance with an interviewee.
+2- The interviewee then sees the invitation and can start the interview which consists of pre-recorded question videos and a way to record the answer as videos with his computer.
+3- Once the interview is done, the idea was to upload the video to the Veritone back-end for transcription (and possibly sentiment analysis). The interviwer can then do a review by skimming through the transcripts and look at specific videos if needed before making the decision to move forward or reject the application. 
